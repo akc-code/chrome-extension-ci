@@ -16,6 +16,6 @@ jobs:
         run: git archive -o retain-ext.zip HEAD
       - name: upload and publish
         run: |
-          sudo chmod +x ./public/scripts/publish-chrome.sh
-          ./public/scripts/publish-chrome.sh
+          sudo chmod +x ./publish-chrome.sh
+          ./publish-chrome.sh
         shell: bash
