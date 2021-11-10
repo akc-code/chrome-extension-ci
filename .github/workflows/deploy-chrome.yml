@@ -11,11 +11,11 @@ jobs:
         with:
           ref: main
       - name: install curl and jq
-        run: sudo apt-get update && apt-get -y install curl jq
+        run: sudo apt-get update && sudo apt-get -y install curl jq
       - name: Package extension
         run: git archive -o retain-ext.zip HEAD
       - name: upload and publish
         run: |
-          chmod +x ./public/scripts/publish-chrome.sh
+          sudo chmod +x ./public/scripts/publish-chrome.sh
           ./public/scripts/publish-chrome.sh
         shell: bash
