@@ -1,0 +1,21 @@
+name: deploy-chrome-extension
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: main
+      - name: install curl and jq
+        run: apt-get update && apt-get -y install curl jq
+      - name: Package extension
+        run: git archive -o retain-ext.zip HEAD
+      - name: upload and publish
+        run: |
+          chmod +x ./public/scripts/publish-chrome.sh
+          ./public/scripts/publish-chrome.sh
+        shell: bash
