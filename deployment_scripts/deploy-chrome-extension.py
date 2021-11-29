@@ -1,3 +1,4 @@
+import json
 import requests
 import sys
 from typing import Any
@@ -98,7 +99,10 @@ def post_release_message_to_slack(channel: str, message: str):
 
 if __name__ == '__main__':
     import sys
-    _, client_id, client_secret, refresh_token, app_id, current_app_version, zip_file_path = sys.argv
+    _, client_id, client_secret, refresh_token, app_id, zip_file_path = sys.argv
+
+    manifest = json.load(open('manifest.json', 'r'))
+    current_app_version = manifest['version']
     
     access_token = get_access_token(client_id, client_secret, refresh_token)
     
