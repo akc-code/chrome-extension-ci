@@ -11,10 +11,10 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: main
-      - name: install curl and jq
+      - name: install curl and jq zip unzip
         run: sudo apt-get update && sudo apt-get -y install curl jq
       - name: Package extension
-        run: git archive -o retain-ext.zip HEAD
+        run: RETAIN_EXT_VERSION=$(cat manifest.json | jq -r .version) && ZIP_FN_PREFIX=${RETAIN_EXT_VERSION//./} && NMRT="${ZIP_FN_PREFIX}-chrome.zip" && zip -r $NMRT .
 
       - name: Set up Python
         uses: actions/setup-python@v2
