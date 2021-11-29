@@ -26,7 +26,7 @@ jobs:
         run: pip install -r deployment_scripts/requirements.txt
 
       - name: publish Chrome extension to the web store
-        run: python deployment_scripts/deploy-chrome-extension.py $RETAIN_EXT_CLIENT_ID $RETAIN_EXT_CLIENT_SECRET $RETAIN_EXT_REFRESH_TOKEN $APP_ID retain-ext.zip
+        run: python deployment_scripts/deploy-chrome-extension.py $RETAIN_EXT_CLIENT_ID $RETAIN_EXT_CLIENT_SECRET $RETAIN_EXT_REFRESH_TOKEN $APP_ID $NMRT
         env:
           RETAIN_EXT_CLIENT_ID: ${{ secrets.RETAIN_EXT_CLIENT_ID }}
           RETAIN_EXT_CLIENT_SECRET: ${{ secrets.RETAIN_EXT_CLIENT_SECRET }}
