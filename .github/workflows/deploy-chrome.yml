@@ -2,6 +2,7 @@ name: deploy-chrome-extension
 on:
   release:
     types: [prereleased]
+    branch: main
 
 jobs:
   build:

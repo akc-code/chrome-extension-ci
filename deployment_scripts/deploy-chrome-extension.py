@@ -26,7 +26,7 @@ def get_access_token(client_id: str, client_secret: str, refresh_token: str) -> 
         print("Retrieved access token successfully.")
         return access_token_response.json().get('access_token')
     else:
-        report_failure_and_exit("Request to access token wasn't successful!", access_token_response)
+        report_failure_and_exit("Request to get the access token wasn't successful!", access_token_response)
 
 
 def upload_zip_file_to_chrome_webstore(access_token: str, app_id: str, zip_file_path: str, zip_file_name: str) -> Any:
