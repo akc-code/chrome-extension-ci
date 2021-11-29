@@ -103,4 +103,4 @@ dist
 # TernJS port file
 .tern-port
 
-.github/workflows/deployment_scripts/.chrome-env
+deployment_scripts/.chrome-env
