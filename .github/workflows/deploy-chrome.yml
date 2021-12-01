@@ -16,7 +16,11 @@ jobs:
       - name: Package extension
         run: RETAIN_EXT_VERSION=$(cat manifest.json | jq -r .version) && ZIP_FN_PREFIX=${RETAIN_EXT_VERSION//./} && NMRT="${ZIP_FN_PREFIX}-chrome.zip" && zip -r $NMRT dist
       - name: Get the release info
-        run: echo "The version that triggered this release - '${{ github.event.release.tag_name }}' "
+        run: |
+          echo "The tag_name in the version that triggered this release - '${{ github.event.release.tag_name }}' "
+          echo "The version_name in the version that triggered this release - '${{ github.event.release.name }}' " 
+          echo "The release notes - '${{ github.event.release.body }}' "
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
